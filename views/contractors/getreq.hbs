@@ -1,0 +1,91 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const date1Input = document.querySelector('input[name="date1"]');
+        const date2Input = document.querySelector('input[name="date2"]');
+        const submitButton = document.querySelector('button[type="submit"]');
+
+        date1Input.addEventListener('change', updateSubmitButton);
+        date2Input.addEventListener('change', updateSubmitButton);
+
+        function updateSubmitButton() {
+            const date1 = new Date(date1Input.value);
+            const date2 = new Date(date2Input.value);
+            const today = new Date();
+
+            if (date1 < today || date1 >= date2) {
+                submitButton.disabled = true;
+                submitButton.style.opacity = 0.5;
+            } else {
+                submitButton.disabled = false;
+                submitButton.style.opacity = 1;
+            }
+        }
+    });
+</script>
+
+<section>
+    <div class="container container-2">
+        <hr>
+        <h1 class="heading" style="text-align: center; color: rgba(239, 151, 47, 1);;"></h1>
+        <hr>
+        <!-- Centered div HTML -->
+        <h1 class="heading" style="text-align: center; color: rgba(239, 151, 47, 1);;"></h1>
+        <hr>
+        <div class="container container-3">
+            <div>
+                <div class="center-div">
+                    <form action="/c/request/{{contractorId}}" method="post" enctype="multipart/form-data">
+                        <p> <br></p>
+                        <p>Select number of workers</p>
+                        <div class="form-outline mb-4">
+                            <input type="number" id="form6Example6" class="form-control" name="noOfWorkers" required />
+                        </div>
+                        <p>Select the starting date</p>
+                        <label class="one">
+                            <input type="date" name="date1">
+                        </label><br>
+                        <p>Select the ending date</p>
+                        <label class="one">
+                            <input type="date" name="date2">
+                        </label><br>
+                        {{!-- <label class="alert">alert to change date if worker is not available</label><br> --}}
+                        <label>Address</label>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" name="address"
+                                id="floatingTextarea" required></textarea>
+                            <label for="floatingTextarea"></label>
+                        </div>
+                         <label>work prefferded</label>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" name="work_preffered" 
+                                id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea"></label>
+                        </div>
+                        <br>
+
+                        {{!-- <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="onlinePayment"
+                                value="online payment" style="border: rgba(239, 151, 47, 1) solid; background-color:" required>
+                            <label class="form-check-label" for="onlinePayment">
+                                <p>Online payment</p>
+                            </label>
+                        </div> --}}
+                        <br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="onsitePayment"
+                                value="onsite payment" style="border: rgba(239, 151, 47, 1) solid;">
+                            <label class="form-check-label" for="onsitePayment">
+                                <p>Onsite payment</p>
+                            </label>
+                        </div>
+
+                        <br>
+                    
+                        <button type="submit" class="btn" style="background-color: rgba(239, 151, 47, 1); ">Submit and pay</button>
+                        <button type="button" class="btn" style="background-color: rgba(239, 151, 47, 1);">Back</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

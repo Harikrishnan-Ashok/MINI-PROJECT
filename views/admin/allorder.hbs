@@ -1,0 +1,69 @@
+
+<section>
+  <div class="container">
+    <div class="col mt-4 mt-3">
+    </div>
+    <table class="table mt-5">
+
+      <thead>
+        <tr>
+          <th scope="col">Order Id</th>
+          <th scope="col">Customer Id</th>
+          <th scope="col">Delivery Address</th>
+          <th scope="col">Payment Method</th>
+          <th scope="col">Order status</th>
+          <th scope="col">Date of Order</th>
+          <th scope="col">Total Amount</th>
+          <th scope="col">Delivery Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each orders}}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{userId}}</td>
+          <td>{{deliveryDetails.name}} <br>{{deliveryDetails.address}}<br>{{deliveryDetails.mobile}}<br>{{deliveryDetails.pincode}}<br>{{deliveryDetails.city}}<br> {{deliveryDetails.state}}</td>
+          <td>{{PaymentMethod}}</td>
+          <td>{{status}}</td>
+         <td>{{date}}</td>
+         <td>{{totalAmount}}</td>
+<td>
+{{deliveryStatus}}
+</td>
+
+
+          
+          {{!-- <td>
+            <a href="/view-orderProduct/{{this._id}}" class="btn btn-primary">View Products</a>
+          </td> --}}
+         
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+<script>
+  function changeDeliveryStatus(Orderid,NewStatus) {
+   
+
+    $.ajax({
+      url: '/change-order-status/',
+      data: {
+        orderid: Orderid,
+        newStatus:NewStatus 
+      },
+      method: 'post',
+      success: (response) => {
+         if (response.success) {
+            console.log('Delivery status updated successfully');
+          } else {
+            console.error('Failed to update delivery status');
+          }
+      }
+    }
+    )
+  }
+</script>
+
+

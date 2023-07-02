@@ -1,0 +1,65 @@
+{{!-- {{#each orders}}
+  <div class="order">
+    <h2>Order ID: {{_id}}</h2>
+    <p>Delivery Details:</p>
+    <ul>
+      <li>Mobile: {{deliveryDetails.mobile}}</li>
+      <li>Address: {{deliveryDetails.address}}</li>
+      <li>Pincode: {{deliveryDetails.pincode}}</li>
+    </ul>
+    <p>User ID: {{userId}}</p>
+    <p>Payment Method: {{PaymentMethod}}</p>
+    <p>Total Amount: {{totalAmount}}</p>
+    <p>Status: {{status}}</p>
+    <p>Date: {{date}}</p>
+
+    <p>Products:</p>
+    <ul>
+      {{#each products.products}}
+        <li>{{this.item}}</li>
+        <li>{{this.quantity}}</li>
+      {{/each}}
+    </ul>
+  </div>
+{{/each}}
+
+ --}}
+
+<section>
+  <div class="container">
+    <div class="col mt-4 mt-3">
+    </div>
+    <table class="table mt-5">
+
+      <thead>
+        <tr>
+          <th scope="col">Order Id</th>
+          <th scope="col">Delivery Address</th>
+          <th scope="col">Payment Method</th>
+          <th scope="col">Order status</th>
+          <th scope="col">Date of Order</th>
+          <th scope="col">Total Amount</th>
+          <th scope="col">Delivery Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each orders}}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{deliveryDetails.name}} <br>{{deliveryDetails.address}}<br>{{deliveryDetails.mobile}}<br>{{deliveryDetails.pincode}}<br>{{deliveryDetails.city}}<br> {{deliveryDetails.state}}</td>
+          <td>{{PaymentMethod}}</td>
+          <td>{{status}}</td>
+         <td>{{date}}</td>
+         <td>{{totalAmount}}</td>
+          <td>{{deliveryStatus}}</td>
+        
+          {{!-- <td>
+            <a href="/view-orderProduct/{{this._id}}" class="btn btn-primary">View Products</a>
+          </td> --}}
+         
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
